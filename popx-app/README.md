@@ -1,16 +1,96 @@
-# React + Vite
+# PopX — Authentication & Account Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a small React application that demonstrates a basic user flow for account creation, login, and profile display. The project is built with Vite and uses Tailwind CSS for layout and styling.
 
-Currently, two official plugins are available:
+Purpose: provide a compact, well-structured starter that shows how to wire simple forms, pass data between routes, and keep the UI responsive and design-accurate.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project overview
 
-## React Compiler
+- Welcome page with clear calls-to-action
+- Create Account form collecting name, email, phone and optional company
+- Login form accepting email and password
+- Account Settings page which displays the user's name and email passed from the previous pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+User data is kept in memory and passed between routes using React Router's navigation state (suitable for demo apps; for persistence use a backend or local storage).
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19 — UI library using hooks and functional components
+- Vite — development server and build tool
+- React Router DOM — client-side routing and navigation state
+- Tailwind CSS — utility-first CSS for responsive layouts
+- ESLint — code quality checks and linting rules
+
+## Project structure (important files)
+
+```
+src/
+├── page/
+│   ├── Welcome.jsx
+│   ├── CreateAccount.jsx
+│   ├── Login.jsx
+│   └── AccountSettings.jsx
+├── App.jsx
+├── main.jsx
+├── index.css
+└── App.css
+
+public/
+├── Group1585.svg
+└── d51c7025-46da-4a3e-aa82-50beb1bb4797.png
+```
+
+## How it works
+
+- Forms in `CreateAccount.jsx` and `Login.jsx` collect user input.
+- When a user submits, `navigate()` is called with a `state` object containing `name` and `email`.
+- `AccountSettings.jsx` reads `location.state` via React Router's `useLocation()` hook and renders the values.
+
+This approach is light and requires no backend; the trade-off is that data does not survive page reloads.
+
+## Development
+
+Prerequisites: Node.js 16+ and npm/yarn.
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview production build locally:
+
+```bash
+npm run preview
+```
+
+Lint code:
+
+```bash
+npm run lint
+```
+
+## Notes and next steps
+
+- For real applications, integrate an authentication backend and persistent storage.
+- Move inline design-specific styles into CSS/Tailwind utilities for maintainability.
+- Add form validation and accessibility improvements.
+
+## Author
+
+Sarthak Gupta (sarthakg97)
+Email: sarthakguptaa2002@gmail.com
+
+Repository: https://github.com/sarthakg97/popx-app
