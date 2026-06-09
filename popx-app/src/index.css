@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+fieldset {
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  padding: 0 12px;
+  position: relative;
+}
+fieldset legend {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  padding-inline: 0;
+  max-width: 0.01px;
+  height: 0;
+  overflow: hidden;
+  transition: max-width 0ms, opacity 400ms ease;
+  opacity: 0;
+  white-space: nowrap;
+  line-height: 1;        /* ← add karo */
+  font-weight: 400;      /* ← add karo */
+}
+
+/* fieldset input {
+  display: block;
+  width: 100%;
+  padding: 10px 0;       
+  line-height: 1.5;
+  font-size: 0.875rem;   
+} */
+
+fieldset input {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1D2226;
+}
+
+fieldset:has(input:focus) legend,
+fieldset:has(input:not(:placeholder-shown)) legend {
+  max-width: 200px;
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+  font-size: 0.8rem;    /* ← size fix */
+}
+/* 
+fieldset input {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  line-height: 1.5;
+  background: transparent;
+  outline: none;
+} */
+
+/* fieldset:has(input:focus) legend,
+fieldset:has(input:not(:placeholder-shown)) legend {
+  max-width: 200px;
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+} */
+
+fieldset:has(input:focus),
+fieldset:has(input:not(:placeholder-shown)) {
+ border: 1px solid #CBCBCB;
+}
+
+input:focus::placeholder {
+  visibility: hidden;
+}
