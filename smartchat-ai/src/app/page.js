@@ -117,23 +117,25 @@ export default function ChatPage() {
               </div>
             </div>
 
-            <div className="border-t border-white/10 bg-slate-950/95 px-4 py-4 sm:px-6">
-              <div className="mx-auto flex max-w-4xl gap-3">
+            <div className="border-t border-white/10 bg-slate-950/95 px-3 py-3 sm:px-4 sm:py-4 md:px-6">
+              <div className="mx-auto flex max-w-4xl gap-2 sm:gap-3">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Type your message..."
-                  autoComplete="off" 
-                  className="flex-1 rounded-3xl border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
+                  autoComplete="off"
+                  onKeyPress={(e) => e.key === "Enter" && !loading && input.trim() && sendMessage()}
+                  className="flex-1 rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900 px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm md:text-base text-slate-100 outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
                 />
                 <button
                   onClick={sendMessage}
                   disabled={loading || input.trim() === ""}
-                  className="inline-flex items-center justify-center rounded-3xl bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700"
+                  className="inline-flex items-center justify-center rounded-2xl sm:rounded-3xl bg-sky-500 px-3 sm:px-5 py-2 sm:py-3 text-xs sm:text-sm md:text-base font-semibold text-white transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700 whitespace-nowrap"
                 >
-                  <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
-                  {loading ? "Sending..." : "Send"}
+                  <FontAwesomeIcon icon={faPaperPlane} className="mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">{loading ? "Sending..." : "Send"}</span>
+                  <span className="sm:hidden">{loading ? "..." : "Go"}</span>
                 </button>
               </div>
             </div>
